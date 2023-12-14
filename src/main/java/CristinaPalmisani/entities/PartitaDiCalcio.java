@@ -11,9 +11,6 @@ import java.time.LocalDate;
 @Entity
 @Table(name = "partita_calcio")
 public class PartitaDiCalcio extends  Evento {
-    @Id
-    @GeneratedValue
-    private long id;
     private String squadraCasa;
     private String squadraOspite;
     @Nullable
@@ -31,10 +28,6 @@ public class PartitaDiCalcio extends  Evento {
     }
 
     public PartitaDiCalcio(){}
-
-    public long getId() {
-        return id;
-    }
 
     public String getSquadraCasa() {
         return squadraCasa;

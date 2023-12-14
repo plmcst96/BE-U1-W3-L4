@@ -6,6 +6,7 @@ import java.util.Set;
 
 @Entity
 @Table(name = "eventi")
+@Inheritance(strategy = InheritanceType.JOINED)
 public class Evento {
     @Id
     @GeneratedValue
