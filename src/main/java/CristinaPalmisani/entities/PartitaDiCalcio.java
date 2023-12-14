@@ -28,6 +28,9 @@ public class PartitaDiCalcio extends  Evento {
 
     public PartitaDiCalcio(){}
 
+    public PartitaDiCalcio(String s, LocalDate of, TipoEvento tipoEvento, int i, Location location2, String juventus, String milan, int i1, int i2) {
+    }
+
     public String getSquadraCasa() {
         return squadraCasa;
     }

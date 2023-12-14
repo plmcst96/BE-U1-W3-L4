@@ -7,7 +7,7 @@ import java.util.Set;
 @Entity
 @Table(name = "eventi")
 @Inheritance(strategy = InheritanceType.JOINED)
-public class Evento {
+public abstract class Evento {
     @Id
     @GeneratedValue
     private long id;

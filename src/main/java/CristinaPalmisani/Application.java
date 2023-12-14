@@ -71,11 +71,40 @@ public class Application {
             EventoDAO eDAO = new EventoDAO(em);
             PartecipazioneDAO parDAO = new PartecipazioneDAO(em);
 
-            Persona
+            Persona persona = pDAO.getById(80);
+            Location location1 = lDAO.getById(73);
+            Location location2 = lDAO.getById(81);
+
+            Concerto c1 = new Concerto("Coldplay", LocalDate.of(2024, 6, 26), "Tour Mondiale", TipoEvento.PUBBLICO, 150000, location1, GenereConcerto.POP, false);
+            Concerto c2 = new Concerto("Billie Eilish", LocalDate.of(2025, 10, 3), "Tour europeo per i fans", TipoEvento.PRIVATO, 20000, location2, GenereConcerto.ROCK, true);
+            //eDAO.save(c1);
+            //eDAO.save(c2);
+            Partecipazione p1 = new Partecipazione(persona, c1, Stato.DA_CONFERMARE);
+            //parDAO.savePartecipazione(p1);
+
+            PartitaDiCalcio calcio = new PartitaDiCalcio("Juventus-Milan", LocalDate.of(2023, 1, 15),TipoEvento.PUBBLICO, 25000, location2, "Juventus", "Milan", 3, 1);
+            eDAO.save(calcio);
+            System.out.println("---------- Streaming Concerti ------------");
+            System.out.println(eDAO.getConcertiInStreaming(false));
+
+            System.out.println("---------- Concert per genere ------------");
+            System.out.println(eDAO.getConcertiPerGenere(GenereConcerto.ROCK));
+
+            System.out.println("---------- Partite in trasferta ------------");
+
+            System.out.println(eDAO.getPartiteVinteInTrasferta());
+
+            System.out.println("---------- Partite in casa ------------");
+            System.out.println(eDAO.getPartiteVinteCasa());
+
+        } catch (Exception ex){
+            System.out.println(ex.getMessage());
+        } finally {
+            em.close();
+            emf.close();
         }
 
-     em.close();
-     emf.close();
+
 
     }
 }
