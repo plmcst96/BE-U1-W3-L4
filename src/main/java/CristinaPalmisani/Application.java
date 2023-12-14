@@ -96,7 +96,10 @@ public class Application {
             System.out.println(eDAO.getPartiteVinteInTrasferta());
 
             System.out.println("---------- Partite in casa ------------");
-            System.out.println(eDAO.getPartiteVinteCasa().size());
+            System.out.println(eDAO.getPartiteVinteCasa());
+
+            System.out.println("---------- Partecipazioni da confermare ------------");
+            System.out.println(parDAO.getPartecipazioneDaConfermaprePerEvento().size());
 
         } catch (Exception ex){
             System.out.println(ex.getMessage());

@@ -4,6 +4,7 @@ import javax.persistence.*;
 
 @Entity
 @Table(name = "partecipazioni")
+@NamedQuery(name = "partecipazioneEventoConf", query = "SELECT p FROM Partecipazione p WHERE p.stato =  :stato GROUP BY p.evento, p.id")
 public class Partecipazione {
     @Id
     @GeneratedValue
