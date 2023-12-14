@@ -99,12 +99,12 @@ public abstract class Evento {
     @Override
     public String toString() {
         return "Evento{" +
-                "id=" + id +
-                ", titolo='" + titolo + '\'' +
+                "titolo='" + titolo + '\'' +
                 ", dataEvento=" + dataEvento +
                 ", descrizione='" + descrizione + '\'' +
                 ", tipoEvento=" + tipoEvento +
                 ", numeroMaxPartecipanti=" + numeroMaxPartecipanti +
+                ", location=" + location +
                 '}';
     }
 }

@@ -82,8 +82,9 @@ public class Application {
             Partecipazione p1 = new Partecipazione(persona, c1, Stato.DA_CONFERMARE);
             //parDAO.savePartecipazione(p1);
 
-            PartitaDiCalcio calcio = new PartitaDiCalcio("Juventus-Milan", LocalDate.of(2023, 1, 15),TipoEvento.PUBBLICO, 25000, location2, "Juventus", "Milan", 3, 1);
-            eDAO.save(calcio);
+            PartitaDiCalcio calcio = new PartitaDiCalcio("Juventus-Milan", LocalDate.of(2023, 1, 15),"Partita fichissima",TipoEvento.PUBBLICO, 25000, location2, "Juventus", "Milan", 3, 1);
+            //eDAO.save(calcio);
+
             System.out.println("---------- Streaming Concerti ------------");
             System.out.println(eDAO.getConcertiInStreaming(false));
 
@@ -95,7 +96,7 @@ public class Application {
             System.out.println(eDAO.getPartiteVinteInTrasferta());
 
             System.out.println("---------- Partite in casa ------------");
-            System.out.println(eDAO.getPartiteVinteCasa());
+            System.out.println(eDAO.getPartiteVinteCasa().size());
 
         } catch (Exception ex){
             System.out.println(ex.getMessage());
