@@ -19,15 +19,16 @@ public class Application {
     private static final EntityManagerFactory emf = Persistence.createEntityManagerFactory("gestioneventi");
 
     public static void main(String[] args) {
-        EntityManager em = emf.createEntityManager();
-        EventoDAO evd = new EventoDAO(em);
+
+      EntityManager em = emf.createEntityManager();
+        /* EventoDAO evd = new EventoDAO(em);
         PartecipazioneDAO pd = new PartecipazioneDAO(em);
         PersonaDAO ped = new PersonaDAO(em);
         LocationDAO ld = new LocationDAO(em);
-        Evento evento;
+        //Evento evento;
         Location location;
         Persona persona;
-        Partecipazione partecipazione;
+        //Partecipazione partecipazione;
         Faker faker = new Faker();
         Random rndm = new Random();
 
@@ -36,23 +37,23 @@ public class Application {
             location = new Location(faker.address().cityName(), faker.address().city());
             ld.save(location);
 
-          /*  evento = new Evento(faker.book().title(), LocalDate.of(rndm.nextInt(2023, 2026),
+          *//*  evento = new Evento(faker.book().title(), LocalDate.of(rndm.nextInt(2023, 2026),
                     rndm.nextInt(1, 13), rndm.nextInt(1, 29) ),
                     faker.lorem().paragraph(), faker.options().option(TipoEvento.class),
-                    faker.number().numberBetween(10, 20300), location);*//*
-           evd.save(evento);*/
+                    faker.number().numberBetween(10, 20300), location);*//**//*
+           evd.save(evento);*//*
 
             persona = new Persona(faker.artist().name(), faker.name().lastName(),
                     faker.internet().emailAddress(),LocalDate.of(rndm.nextInt(2023, 2026),
                     rndm.nextInt(1, 13), rndm.nextInt(1, 29) ),
                     faker.options().option(Sesso.class));
             ped.save(persona);
-            /*partecipazione = new Partecipazione(persona, evento, faker.options().option(Stato.class));
-            pd.savePartecipazione(partecipazione);*/
+            *//*partecipazione = new Partecipazione(persona, evento, faker.options().option(Stato.class));
+            pd.savePartecipazione(partecipazione);*//*
         }
         System.out.println("salvati");
 
-     /*   long id = 70;
+     *//*   long id = 70;
         Evento evFromDB = evd.getById(id);
         if (evFromDB != null){
             System.out.println(evFromDB);
@@ -61,6 +62,17 @@ public class Application {
         }
 
         evd.delete(id);*/
+
+        System.out.println("----------------------GIORNO 3 ----------------------");
+
+        try {
+            PersonaDAO pDAO = new PersonaDAO(em);
+            LocationDAO lDAO = new LocationDAO(em);
+            EventoDAO eDAO = new EventoDAO(em);
+            PartecipazioneDAO parDAO = new PartecipazioneDAO(em);
+
+            Persona
+        }
 
      em.close();
      emf.close();

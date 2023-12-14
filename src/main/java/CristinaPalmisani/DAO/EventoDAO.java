@@ -2,6 +2,7 @@ package CristinaPalmisani.DAO;
 
 import CristinaPalmisani.entities.Concerto;
 import CristinaPalmisani.entities.Evento;
+import CristinaPalmisani.entities.PartitaDiCalcio;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityTransaction;
@@ -47,6 +48,16 @@ public class EventoDAO {
 
     public List<Concerto> getConcertiPerGenere(){
         TypedQuery<Concerto> query = em.createQuery("SELECT c FROM Concert c WHERE c.genere = : genere", Concerto.class);
+        return query.getResultList();
+    }
+
+    public List<PartitaDiCalcio> getPartiteVinteCasa(){
+        TypedQuery<PartitaDiCalcio> query = em.createNamedQuery("getPartiteVinteCasa", PartitaDiCalcio.class);
+        return query.getResultList();
+    }
+
+    public List<PartitaDiCalcio> getPartiteVinteInTrasferta(){
+        TypedQuery<PartitaDiCalcio> query = em.createNamedQuery("getPartiteVinteInTrasferta", PartitaDiCalcio.class);
         return query.getResultList();
     }
 }
