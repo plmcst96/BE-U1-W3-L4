@@ -1,9 +1,12 @@
 package CristinaPalmisani.DAO;
 
+import CristinaPalmisani.entities.Concerto;
 import CristinaPalmisani.entities.Evento;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityTransaction;
+import javax.persistence.TypedQuery;
+import java.util.List;
 
 public class EventoDAO {
     private  final EntityManager em;
@@ -35,5 +38,15 @@ public class EventoDAO {
         } else {
             System.out.println("Evento " + found.getTitolo() + " eliminato correttamente!");
         }
+    }
+
+    public List<Concerto> getConcertiInStreaming(){
+        TypedQuery<Concerto> query = em.createQuery("SELECT c FROM Concert c WHERE c.inStreaming = true", Concerto.class);
+        return query.getResultList();
+    }
+
+    public List<Concerto> getConcertiPerGenere(){
+        TypedQuery<Concerto> query = em.createQuery("SELECT c FROM Concert c WHERE c.genere = : genere", Concerto.class);
+        return query.getResultList();
     }
 }

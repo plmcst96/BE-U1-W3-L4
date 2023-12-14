@@ -2,14 +2,13 @@ package CristinaPalmisani.entities;
 
 import com.sun.istack.Nullable;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 import java.time.LocalDate;
 
 @Entity
 @Table(name = "partita_calcio")
+@NamedQuery(name = "getPartiteVinteCasa", query = "SELECT f FROM PartitaDiCalcio f WHERE f.numGolSqCasa > f.numGolSqOspite")
+@NamedQuery(name = "getPartiteVinteInTrasferta", query = "SELECT f FROM PartitaDiCalcio f WHERE f.numGolSqCasa < f.numGolSqOspite")
 public class PartitaDiCalcio extends  Evento {
     private String squadraCasa;
     private String squadraOspite;

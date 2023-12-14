@@ -3,10 +3,14 @@ package CristinaPalmisani.entities;
 import javax.persistence.*;
 import java.time.LocalDate;
 import java.util.List;
+import java.util.Set;
 
 @Entity
 @Table(name = "persone")
 public class Persona {
+
+    @OneToMany(mappedBy = "vincitore", cascade = CascadeType.REMOVE)
+    Set<GaraAtletica> vincitoriGaraAtletica;
     @Id
     @GeneratedValue
     private  long id;
@@ -19,6 +23,12 @@ public class Persona {
     @OrderBy("data_evento")
     @OneToMany(mappedBy = "persona", cascade = CascadeType.REMOVE)
     private List<Partecipazione> listaPartecipazione;
+
+    @ManyToMany
+    @JoinTable(name = "competizione_atletica_atleti",
+            joinColumns = @JoinColumn(name = "atleti_id"),
+            inverseJoinColumns = @JoinColumn(name = "competizione_atletica_id"))
+    private List<GaraAtletica> garaAtleticaList;
 
     public Persona(String nome, String cognome, String email, LocalDate compleanno, Sesso sesso) {
         this.nome = nome;
@@ -77,7 +87,26 @@ public class Persona {
     public List<Partecipazione> getListaPartecipazione() {
         return listaPartecipazione;
     }
-    
+
+    public Set<GaraAtletica> getVincitoriGaraAtletica() {
+        return vincitoriGaraAtletica;
+    }
+
+    public void setVincitoriGaraAtletica(Set<GaraAtletica> vincitoriGaraAtletica) {
+        this.vincitoriGaraAtletica = vincitoriGaraAtletica;
+    }
+
+    public void setListaPartecipazione(List<Partecipazione> listaPartecipazione) {
+        this.listaPartecipazione = listaPartecipazione;
+    }
+
+    public List<GaraAtletica> getGaraAtleticaList() {
+        return garaAtleticaList;
+    }
+
+    public void setGaraAtleticaList(List<GaraAtletica> garaAtleticaList) {
+        this.garaAtleticaList = garaAtleticaList;
+    }
 
     @Override
     public String toString() {
